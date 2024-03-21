@@ -16,4 +16,3 @@ def minOperations(n):
             iterator = 1
         iterator += 1
     return operations
-
