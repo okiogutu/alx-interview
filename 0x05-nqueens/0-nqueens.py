@@ -25,12 +25,9 @@ if __name__ == '__main__':
     r = 0
     c = 0
 
-    # iterate thru rows
     while r < n:
         goback = False
-        # iterate thru columns
         while c < n:
-            # check is current column is safe
             safe = True
             for cord in placed_queens:
                 col = cord[1]
@@ -46,6 +43,8 @@ if __name__ == '__main__':
                 c += 1
                 continue
 		
+            cords = [r, c]
+
             if r == n - 1:
                 solutions.append(placed_queens[:])
                 for cord in placed_queens:
@@ -64,13 +63,12 @@ if __name__ == '__main__':
             break
         if stop:
             break
-        # on fail: go back to previous row
-        # and continue from last safe column + 1
+        # on fail reiterate from last column
         if goback:
             r -= 1
             while r >= 0:
                 c = placed_queens[r][1] + 1
-                del placed_queens[r]  # delete previous queen coordinates
+                del placed_queens[r]
                 if c < n:
                     break
                 r -= 1
