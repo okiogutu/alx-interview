@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
+'''Lockboxing algorithm solution module'''
+
 def canUnlockAll(boxes):
+    '''Confirm boxes have keys to other boxes'''
     box_count = len(boxes)
     opened_boxes = set([0])
     closed_boxes = set(boxes[0]).difference(set([0]))
