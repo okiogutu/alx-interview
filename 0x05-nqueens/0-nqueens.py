@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" N queens """
+'''N Queens '''
 
 import sys
 
@@ -25,9 +25,12 @@ if __name__ == '__main__':
     r = 0
     c = 0
 
+    # iterate thru rows
     while r < n:
         goback = False
+        # iterate thru columns
         while c < n:
+            # check is current column is safe
             safe = True
             for cord in placed_queens:
                 col = cord[1]
@@ -42,9 +45,12 @@ if __name__ == '__main__':
                     break
                 c += 1
                 continue
-		
-            cords = [r, c]
 
+            # place queen
+            cords = [r, c]
+            placed_queens.append(cords)
+            # if last row, append solution and reset all to last unfinished row
+            # and last safe column in that row
             if r == n - 1:
                 solutions.append(placed_queens[:])
                 for cord in placed_queens:
@@ -63,12 +69,13 @@ if __name__ == '__main__':
             break
         if stop:
             break
-        # on fail reiterate from last column
+        # on fail: go back to previous row
+        # and continue from last safe column + 1
         if goback:
             r -= 1
             while r >= 0:
                 c = placed_queens[r][1] + 1
-                del placed_queens[r]
+                del placed_queens[r]  # delete previous queen coordinates
                 if c < n:
                     break
                 r -= 1
