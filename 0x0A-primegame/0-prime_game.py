@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-'''Prime Game'''
+''' Study Gaming '''
 
 
 def isWinner(x, nums):
-    '''finds the winner'''
+    '''finds winner'''
     winnerCounter = {'Maria': 0, 'Ben': 0}
 
     for i in range(x):
@@ -20,22 +20,22 @@ def isWinner(x, nums):
 
 
 def isRoundWinner(n, x):
-    '''find round winner'''
+    '''rounds and finds the winner'''
     list = [i for i in range(1, n + 1)]
     players = ['Maria', 'Ben']
 
     for i in range(n):
-        # get current player
+        # gets the current player
         currentPlayer = players[i % 2]
         selectedIdxs = []
         prime = -1
         for idx, num in enumerate(list):
             # if already picked prime num then
-            # find if num is multipl of the prime num
+            # is multiple of the prime number
             if prime != -1:
                 if num % prime == 0:
                     selectedIdxs.append(idx)
-            # else check is num is prime then pick it
+            # else check if num is prime num then pick it
             else:
                 if isPrime(num):
                     selectedIdxs.append(idx)
@@ -53,7 +53,7 @@ def isRoundWinner(n, x):
 
 
 def isPrime(n):
-    # 0, 1, even numbers greater than 2 are NOT PRIME
+    # n is 0, 1, even numbers greater than 2 are NOT PRIME
     if n == 1 or n == 0 or (n % 2 == 0 and n > 2):
         return False
     else:
